@@ -1,9 +1,10 @@
 # Delilah Resto
 
 ## Descriptions
+
 Api project - Acamica
 
-###### Step run proyect
+## Installing
 
 > 1. npm install
 > 2. npx sequelize-cli db:create

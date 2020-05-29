@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: true,
             },
             image: {
-                type: Sequelize.BLOB,
+                type: DataTypes.BLOB,
                 allowNull: true,
             },
             createdAt: {

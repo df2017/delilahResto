@@ -48,11 +48,11 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
     Order.associate = function (models) {
-        Order.hasMany(models.Project, {
+        Order.hasMany(models.Product, {
             foreignKey: 'id_product',
             as: 'Product',
         });
-        Order.hasMany(models.Crewman, {
+        Order.hasMany(models.User, {
             foreignKey: 'id_user',
             as: 'User',
         });

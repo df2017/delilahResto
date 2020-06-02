@@ -4,7 +4,7 @@ const handler = require('./handlerRequest');
 const Product = db.product;
 
 exports.getAllProducts = handler.getAll(Product);
-//exports.getBilling = factory.getOne(Billing, Project);
+exports.getProduct = handler.getOne(Product);
 exports.createProduct = handler.createOne(Product);
-//exports.updateBilling = factory.updateOne(Billing);
-//exports.deleteBilling = factory.deleteOne(Billing);
+exports.updateProduct = handler.updateOne(Product);
+exports.deleteProduct = handler.deleteOne(Product);

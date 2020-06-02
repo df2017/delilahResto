@@ -14,25 +14,23 @@ exports.getAll = (Model) =>
     });
   };
 
-// exports.getOne = (Model, include) =>
-//   catchAsync(async (req, res, next) => {
-//     const result = await Model.findByPk(req.params.id, {
-//       include: include,
-//     });
+exports.getOne = (Model) =>
+  async (req, res, next) => {
+    const result = await Model.findByPk(req.params.id);
 
-//     if (!result) {
-//       return next(
-//         new AppError(`No client was found with the id: ${req.params.id}`, 404)
-//       );
-//     }
+    if (!result) {
+      return next(
+       `No client was found with the id: ${req.params.id}`, 404
+      );
+    }
 
-//     res.status(200).json({
-//       status: 'success',
-//       data: {
-//         data: result,
-//       },
-//     });
-//   });
+    res.status(200).json({
+      status: 'success',
+      data: {
+        data: result,
+      },
+    });
+  };
 
 exports.createOne = (Model) =>
   async (req, res, next) => {
@@ -44,45 +42,41 @@ exports.createOne = (Model) =>
     });
   };
 
-// exports.updateOne = (Model) =>
-//   catchAsync(async (req, res, next) => {
-//     const result = await Model.update(req.body, {
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
-//     if (!result) {
-//       return next(
-//         new AppError(
-//           `Element with id: ${req.params.id}, couldn't been updated.`,
-//           404
-//         )
-//       );
-//     }
-//     const data = await Model.findByPk(req.params.id);
-//     res.status(200).json({
-//       status: 'success',
-//       data: data,
-//     });
-//   });
+exports.updateOne = (Model) =>
+  async (req, res, next) => {
+    const result = await Model.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!result) {
+      return next(`Element with id: ${req.params.id}, couldn't been updated.`,404);
+    }
+    const data = await Model.findByPk(req.params.id);
+    res.status(200).json({
+      status: 'success',
+      data: data,
+    });
+  };
 
-// exports.deleteOne = (Model) =>
-//   catchAsync(async (req, res, next) => {
-//     const result = Model.destroy({
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
-//     if (!result) {
-//       return next(
-//         new AppError(
-//           `Element with id: ${req.params.id}, couldn't been deleted.`,
-//           404
-//         )
-//       );
-//     }
-//     res.status(204).json({
-//       status: 'success',
-//       data: null,
-//     });
-//   });
+exports.deleteOne = (Model) =>
+  async (req, res, next) => {
+    Model.findOne({
+      where: {
+        id: req.params.id,
+      },
+    }).then((data) => {
+      if (!data) {
+        res.status(404).json({
+          message: `Element with id: ${req.params.id}, not found.`,
+        });
+        return;
+      }
+      Model.destroy({
+        where: {
+          id: req.params.id,
+        },
+      })
+      res.status(204).json();
+    })
+  };

@@ -1,7 +1,11 @@
-# delilahResto
+# Delilah Resto
 
-**Step run proyect
+## Descriptions
 
-1 - npm install
-2 - npx sequelize-cli db:create
-3 - npx sequelize-cli db:migrate
+Api project - Acamica
+
+## Installing
+
+> 1. npm install
+> 2. npx sequelize-cli db:create
+> 3. npx sequelize-cli db:migrate

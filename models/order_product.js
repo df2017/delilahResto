@@ -1,36 +1,29 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  const Order = sequelize.define(
-    "Order",
+  const Order_Product = sequelize.define(
+    "Order_Product",
     {
       id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false,
       },
-      id_user: {
+      id_order: {
         type: DataTypes.INTEGER,
         allowNull: false,
         foreignKey: true,
       },
-      id_status: {
+      id_product: {
         type: DataTypes.INTEGER,
         allowNull: false,
         foreignKey: true,
       },
-      details: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      totalAmount: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      pay: {
-        type: DataTypes.STRING,
+      amountProduct: {
+        type: DataTypes.INTEGER,
         allowNull: false,
+        defaultValue: 1,
       },
       createdAt: {
         allowNull: false,
@@ -49,5 +42,15 @@ module.exports = (sequelize, DataTypes) => {
       },
     }
   );
-  return Order;
+  Order_Product.associate = function (models) {
+    Order_Product.hasMany(models.Product, {
+      foreignKey: "id_order",
+      as: "Order",
+    });
+    Order_Product.hasMany(models.User, {
+      foreignKey: "id_product",
+      as: "Product",
+    });
+  };
+  return Order_Product;
 };

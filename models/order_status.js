@@ -1,8 +1,8 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  const Product = sequelize.define(
-    "Product",
+  const Order_Statuses = sequelize.define(
+    "Order_Statuses",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -10,25 +10,9 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         allowNull: false,
       },
-      name: {
+      status: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      description: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      price: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      image: {
-        type: DataTypes.BLOB,
-        allowNull: true,
-      },
-      favorite: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true,
       },
       createdAt: {
         allowNull: false,
@@ -47,8 +31,5 @@ module.exports = (sequelize, DataTypes) => {
       },
     }
   );
-  Product.associate = function (models) {
-    // associations can be defined here
-  };
-  return Product;
+  return Order_Statuses;
 };

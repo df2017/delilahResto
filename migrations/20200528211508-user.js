@@ -37,9 +37,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      roleAdmin: {
-        type: Sequelize.BOOLEAN,
+      role: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+        foreignKey: true,
+        references: {
+          model: "User_Roles",
+          key: "id",
+        },
       },
       createdAt: {
         type: Sequelize.DATE,

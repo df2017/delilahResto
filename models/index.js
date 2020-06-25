@@ -36,6 +36,29 @@ db.Sequelize = Sequelize;
 
 db.product = require('./product')(sequelize, Sequelize);
 db.user = require('./user')(sequelize, Sequelize);
+db.orderStatus = require('./order_status')(sequelize, Sequelize);
 db.order = require('./order')(sequelize, Sequelize);
+db.orderProduct = require('./order_product')(sequelize, Sequelize);
+
+
+db.order.belongsTo(db.user, {
+  sourceKey: 'id',
+  foreignKey: 'id_user',
+});
+
+db.order.belongsTo(db.orderStatus, {
+  sourceKey: 'id',
+  foreignKey: 'id_status',
+});
+
+db.orderProduct.belongsTo(db.order, {
+  sourceKey: 'id',
+  foreignKey: 'id_order',
+});
+db.orderProduct.belongsTo(db.product, {
+  sourceKey: 'id',
+  foreignKey: 'id_product',
+});
 
 module.exports = db;
+

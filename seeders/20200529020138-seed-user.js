@@ -9,8 +9,8 @@ module.exports = {
       [
         {
           userName: "admin",
-          name: "administrator",
-          surname: "system",
+          name: "Administrator",
+          surname: "System",
           email: "admin@mail.com",
           password: bcrypt.hashSync('admin123', 10),
           role: 1,
@@ -22,6 +22,8 @@ module.exports = {
           name: "Diego",
           surname: "Ferrey",
           email: "dferrey@mail.com",
+          phoneNumber: "3512266891",
+          address: "El Pais 902 - Villa San Nicolas",
           password: bcrypt.hashSync('ferrey123', 10),
           role: 2,
           createdAt: new Date(),

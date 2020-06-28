@@ -34,7 +34,7 @@ exports.login = (Model) => async (req, res) => {
     };
 
     // generate token.
-    jwt.sign(payload, process.env.SECRETKEY, { expiresIn: 600 }, (err, token) => {
+    jwt.sign(payload, process.env.SECRETKEY, { expiresIn: 2400 }, (err, token) => {
 
         if (err) {
           res.status(500).send({ messageError: err.message });

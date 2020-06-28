@@ -27,10 +27,17 @@ module.exports = {
           key: 'id',
         },
       },
+      nameProduct: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       amountProduct: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: 1,
+      },
+      priceProduct: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

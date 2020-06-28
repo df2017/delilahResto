@@ -1,24 +1,46 @@
-const db = require('../models/index');
+const db = require("../models/index");
+const e = require("express");
 
 /************************ Search all elements ************************/
 exports.getAll = (Model, include) => async (req, res) => {
-  const filter = req.query;
-  let attrs;
-  if (filter["exclude"] !== undefined) {
-    attrs = req.query.exclude;
-    delete filter.exclude;
-  } else {
-    attrs = ",";
+
+  const queryFilter = req.query;
+  const filter = ['exclude','limit','skip']
+
+  const getFilter = (param) => {
+    let typeFilter;
+    if(param in req.query){
+      typeFilter = req.query[param]
+    }
+    else{
+      if(param == 'filter'){
+        filter.forEach((e)=> {
+          delete queryFilter[e]
+        })
+        typeFilter = queryFilter
+      }else{
+        typeFilter = ''
+      }  
+    }
+    return typeFilter
   }
-  Model.findAll({
+  
+  const limitElement = getFilter('limit');
+  const sinceElement =  getFilter('skip');
+
+  const query = {
     attributes: {
-      exclude: attrs.split(","),
+      exclude: getFilter('exclude').split(","),
     },
     where: {
-      ...filter,
+      ...getFilter('filter'),
     },
     include: include,
-  })
+    limit: parseInt(limitElement) || 5,
+    offset: parseInt(sinceElement) || 0,
+  };
+ 
+  Model.findAll(query)
     .then((data) => {
       if (!data) {
         res.status(404).json({
@@ -75,6 +97,9 @@ exports.getOne = (Model) => async (req, res) => {
 
 /************************ Create one element ************************/
 exports.createOne = (Model) => async (req, res) => {
+  console.log(req.body)
+  req.body.image = req.file
+  console.log(req.body)
   Model.create(req.body)
     .then((data) => {
       res.status(200).json({
@@ -97,57 +122,47 @@ exports.createOne = (Model) => async (req, res) => {
 
 /************************ Create  Order ************************/
 exports.createOrder = (Model) => async (req, res) => {
-  const  dataBody = req.body;
+  const dataBody = req.body;
   let transaction = await db.sequelize.transaction();
   let totalAmount = [];
-  let idProduct = [];
-  let amountProduct = [];
-  let priceProduct = [];
+  let detailOrder = [];
+
 
   dataBody.detail.forEach((element) => {
-    idProduct.push(element.id_product)
-    amountProduct.push(element.amountProduct)
-  })
+    let totalProduct = element.priceProduct * element.amountProduct;
+    detailOrder.push(`${element.amountProduct}x${element.nameProduct}`); 
+    totalAmount.push(totalProduct);
+  });
 
-  let product = await Model[2].findAll({
-    where: {
-      id : idProduct
-    }
-  })
-
-  product.forEach((elem) => {
-    priceProduct.push(elem.dataValues.price)
-  })
-
-  priceProduct.forEach((price, index) => {
-      totalAmount.push(parseInt(price) * amountProduct[index])
-  })
-  try {
+    dataBody.order.totalAmount = totalAmount.reduce((acc, val) => {
+      return acc + val;
+    }, 0);
+    dataBody.order.details = detailOrder.join(", ");
+    try {
+      let order = await Model[0].create(dataBody.order, {
+        transaction,
+      });
   
-    dataBody.order.totalAmount = totalAmount.reduce((acc, val) => { return acc + val; }, 0);
-    let order = await Model[0].create(dataBody.order, {
-      transaction
-    });
-
-    dataBody.detail.forEach((element) => {
-      element.id_order = order.dataValues.id;
-    })
-    
-    let product = await Model[1].bulkCreate(dataBody.detail, {
-      transaction
-    });
-    await transaction.commit();
-        if (product) {
-          res.json({
-            success: 1,
-            //data: product,
-          });
-        }
-  } catch (err) {
-    await transaction.rollback();
-    res.json({ err });
-  }
-}
+      dataBody.detail.forEach((element) => {
+        element.id_order = order.dataValues.id;
+      });
+  
+      let product = await Model[1].bulkCreate(dataBody.detail, {
+        transaction,
+      });
+  
+      await transaction.commit();
+      if (product) {
+        res.json({
+          success: 1,
+          //data: product,
+        });
+      }
+    } catch (err) {
+      await transaction.rollback();
+      res.json({ err });
+    }
+};
 
 /************************ Update one element ************************/
 exports.updateOne = (Model) => async (req, res) => {

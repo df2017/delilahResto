@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "delilah",
-    "password": "delilahresto",
+    "username": "root",
+    "password": "root",
     "driver": "pg",
-    "database": "delilah_db",
+    "database": "db_diegoferreyra",
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mysql",

@@ -25,10 +25,6 @@ module.exports = {
         type: Sequelize.BLOB,
         allowNull: true,
       },
-      favorite: {
-        type: Sequelize.BOOLEAN,
-        allowNull: true,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

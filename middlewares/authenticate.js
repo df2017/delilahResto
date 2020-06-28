@@ -12,6 +12,7 @@ exports.authenticate = (req, res, next) => {
   }
   // Validate token.
   jwt.verify(token, process.env.SECRETKEY, (err, decoded) => {
+    console.log(decoded)
     req.userInfo = decoded;
   });
 

@@ -2,7 +2,8 @@
 const express = require('express');
 const cors = require("cors");
 const bodyParser = require('body-parser');
-
+const multer = require('multer');
+const upload = multer();
 //Middleware Project
 const middlewareError = require('./middlewares/catchError');
 
@@ -14,8 +15,12 @@ const orderProductRoutes = require('./routes/orderProductRoutes');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(upload.single('image')); 
+
+app.use(express.static('public/images'));
+
 app.use(cors());
 
 app.use('/api/v1/users', userRoutes);

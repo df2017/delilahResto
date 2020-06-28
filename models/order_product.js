@@ -20,10 +20,17 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         foreignKey: true,
       },
+      nameProduct: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       amountProduct: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 1,
+      },
+      priceProduct: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

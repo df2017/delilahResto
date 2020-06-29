@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "df200240537",
+    "password": "root",
     "driver": "pg",
     "database": "db_diegoferreyra",
     "host": "127.0.0.1",

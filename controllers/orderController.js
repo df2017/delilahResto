@@ -5,7 +5,17 @@ const { sequelize } = require("../models/index");
 const Order = db.order;
 const Order_Status = db.orderStatus;
 const User = db.user;
-const Order_Product = db.orderProduct;
+
+// let hour = data[0].createdAt;
+// let dateTimeFormat = new Intl.DateTimeFormat('ar-EG', { hour: '2-digit', minute: '2-digit' }).format(hour) 
+// console.log(dateTimeFormat)
+// data[0].createdAt = dateTimeFormat
+
+
+let orderFilter = {
+  model: Order,
+  attributes: ["id","details","totalAmount","pay"],
+};
 
 let orderStatusFilter = {
   model: Order_Status,
@@ -20,7 +30,7 @@ let fullName = User.sequelize.fn(
 );
 let userFilter = {
   model: User,
-  attributes: [[fullName, "full_name"], "address"],
+  attributes: [[fullName, "user"], "address"],
 };
 
 exports.getAllOrders = handler.getAll(Order, [orderStatusFilter, userFilter]);

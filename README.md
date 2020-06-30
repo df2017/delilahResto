@@ -4,6 +4,10 @@
 
 Api Delilah Resto - Acamica Prject
 
+## Pre-Installing Project
+
+> Modify password key in file config.json. Path: /config/config.json. Should enter the root password of the database
+
 ## Installing Project
 
 > 1. npm install

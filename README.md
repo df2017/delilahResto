@@ -2,7 +2,7 @@
 
 ## Descriptions
 
-Api Delilah Resto - Acamica Prject
+Api Delilah Resto - Acamica Project
 
 ## Pre-Installing Project
 ```
@@ -11,7 +11,7 @@ Path: /config/config.json.
 Should enter the root password of the database
 ```
 ## Installing Project
-```
+```cmd
 1. npm install
 2. npx sequelize-cli db:create
 3. npx sequelize-cli db:migrate
@@ -19,7 +19,7 @@ Should enter the root password of the database
 ```
 ## Run Project
 
-```
+```cmd
 npm start
 ```
 ## Download Postman
@@ -36,7 +36,7 @@ To click [Postman](https://www.postman.com/downloads/)
 #### Register New User
 + POST /api/v1/users/register
 > body **required**
-```
+```json
 {
   "userName": "string",
   "name": "string",
@@ -47,4 +47,33 @@ To click [Postman](https://www.postman.com/downloads/)
   "password": "string",
   "role": 0
 }
+```
+
+#### Login user
++ POST /api/v1/users/login
+> body **required**
+```json
+{
+  "userName": "string",
+  "password": "string"
+}
+```
+
+#### Create new product (*only admin user)
++ POST /api/v1/products
+
+> header **required**
+```
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ
+```
+
+> body (form-data) **required**
+
+```javascript
+  const formData = new FormData();
+
+  formData.append("name", "Hamburger");
+  formData.append("price", "250");
+  formData.append("description", "beef, tomatoe, chesse");
+  formData.append("image", fileInput.files[0]);
 ```

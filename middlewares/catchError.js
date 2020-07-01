@@ -7,7 +7,7 @@ const catchError = (err, req, res, next) => {
         });
         return;
     }
-    res.send("Ha ocurrido un error inesperado. Intente mas tarde.");
+    res.send("Unexpected error has occurred. Try again later.. Thanks");
   }
   next();
 }

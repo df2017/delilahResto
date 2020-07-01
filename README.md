@@ -77,3 +77,33 @@ Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ
   formData.append("description", "beef, tomatoe, chesse");
   formData.append("image", fileInput.files[0]);
 ```
+
+#### Create order and save
++ POST /api/v1/order/products
+
+> header **required**
+```
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ
+```
+
+> body (form-data) **required** - Include array products
+
+```json
+{
+  "order": {
+    "id_user": 2,
+    "id_status": 1,
+    "pay": 2
+  },
+  "detail": [
+    {
+      "id_product": 3,
+      "amountProduct": 3
+    },
+    {
+      "id_product": 1,
+      "amountProduct": 5
+    }
+  ]
+}
+```

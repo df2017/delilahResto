@@ -30,12 +30,12 @@ exports.getAll = (Model, include) => async (req, res) => {
   const sinceElement = getFilter("skip");
   const query = {
     attributes: {
-      exclude: getFilter("exclude").split(","), 
+      exclude: getFilter("exclude").split(","),
     },
     where: {
       ...getFilter("filter"),
     },
-    order: [['createdAt', 'DESC'],],
+    order: [["createdAt", "DESC"]],
     include: include,
     limit: parseInt(limitElement) || 10,
     offset: parseInt(sinceElement) || 0,
@@ -124,16 +124,15 @@ exports.createOne = (Model) => async (req, res) => {
 
 const nameProductImage = [];
 const configuracionMulter = {
-  
   storage: (fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, __dirname + "/../public/images/");
     },
     filename: (req, file, cb) => {
       let id = uuid.v4();
-      let nameExtension = file.mimetype.split('/');
+      let nameExtension = file.mimetype.split("/");
       let fullName = `${nameExtension[0]}-${id}.${nameExtension[1]}`;
-      nameProductImage.pop()
+      nameProductImage.pop();
       nameProductImage.push(fullName);
       cb(null, fullName);
     },
@@ -152,8 +151,7 @@ exports.upload = multer(configuracionMulter).single("image");
 /************************ Create  Product ************************/
 
 exports.createProduct = (Model) => async (req, res) => {
-
-  if(nameProductImage.length != 0){
+  if (nameProductImage.length != 0) {
     req.body.image = nameProductImage[0];
   }
   Model.create(req.body)
@@ -183,47 +181,72 @@ exports.createOrder = (Model) => async (req, res) => {
   let totalAmount = [];
   let detailOrder = [];
 
-  dataBody.detail.forEach((element) => {
-    let totalProduct = element.priceProduct * element.amountProduct;
-    detailOrder.push(`${element.amountProduct}x${element.nameProduct}`);
-    totalAmount.push(totalProduct);
-  });
+  let result = new Promise((resolve, reject) => {
+    dataBody.detail.forEach((value, index) => {
+      Model[2].findByPk(value.id_product).then((data) => {
+        let totalProduct = parseInt(data.dataValues.price) * parseInt(value.amountProduct);
+        let detail = `${value.amountProduct}x${data.dataValues.name}`;
 
-  dataBody.order.totalAmount = totalAmount.reduce((acc, val) => {
-    return acc + val;
-  }, 0);
-  dataBody.order.details = detailOrder.join(", ");
-  try {
-    let order = await Model[0].create(dataBody.order, {
-      transaction,
+        detailOrder.push(detail);
+        totalAmount.push(totalProduct);
+
+        if (detailOrder.length === dataBody.detail.length) resolve(detailOrder.length);
+      })
+      .catch((err)=>{
+        res.json({ messageError: err });
+      })
     });
+});
 
-    dataBody.detail.forEach((element) => {
-      element.id_order = order.dataValues.id;
+result
+    .then((data) => {
+      if (dataBody.detail.length != data) {
+        res.json({ messageError: err });
+        return;
+      }
+
+      dataBody.order.totalAmount = totalAmount.reduce((acc, val) => {
+        return acc + val;
+      }, 0);
+      dataBody.order.details = detailOrder.join(", ");
+      let insertData = async () => {
+        try {
+          let order = await Model[0].create(dataBody.order, {
+            transaction,
+          });
+          
+          let idOrder;
+          dataBody.detail.forEach((element) => {
+            element.id_order = order.dataValues.id;
+            idOrder = order.dataValues.id;
+          });
+          let product = await Model[1].bulkCreate(dataBody.detail, {
+            transaction,
+          });
+      
+          await transaction.commit();
+          if (product) {
+            res.json({
+              success: "ok",
+              id_order: idOrder,
+            });
+          }
+        } catch (err) {
+          await transaction.rollback();
+          res.json({ messageError: err });
+        }
+      }
+      insertData()
+    })
+    .catch((err) => {
+      res.json({ messageError: err });
     });
-
-    let product = await Model[1].bulkCreate(dataBody.detail, {
-      transaction,
-    });
-
-    await transaction.commit();
-    if (product) {
-      res.json({
-        success: 1,
-        //data: product,
-      });
-    }
-  } catch (err) {
-    await transaction.rollback();
-    res.json({ err });
-  }
 };
 
 /************************ Update one element ************************/
 
 exports.updateOne = (Model) => async (req, res) => {
-
-  if(nameProductImage.length != 0){
+  if (nameProductImage.length != 0) {
     req.body.image = `/public/${nameProductImage}`;
   }
 

@@ -27,15 +27,7 @@ module.exports = {
           key: 'id',
         },
       },
-      nameProduct: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       amountProduct: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      priceProduct: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },

@@ -12,7 +12,7 @@ router
 
 router
   .route('/:id')
-  .get(productController.getProduct)
+  .get([auth.authenticate, auth.accessOnlyAdmin], productController.getProduct)
   .patch([upload, auth.authenticate, auth.accessOnlyAdmin], productController.updateProduct)
   .delete([auth.authenticate, auth.accessOnlyAdmin], productController.deleteProduct);
 

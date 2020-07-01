@@ -1,17 +1,16 @@
 const express = require('express');
 const orderProductController = require('../controllers/orderProductController');
+const auth = require('../middlewares/authenticate');
 
 const router = express.Router();
 
 router
   .route('/')
-  .get(orderProductController.getAllOrderProducts)
-  .post(orderProductController.createOrderProduct);
+  .get([auth.authenticate, auth.accessOnlyAdmin], orderProductController.getAllOrderProducts)
+  .post([auth.authenticate, auth.onlyOwner],orderProductController.createOrderProduct);
 
 router
   .route('/:id')
-  .get(orderProductController.getOrderProduct)
-  .patch(orderProductController.updateOrderProduct)
-  .delete(orderProductController.deleteOrderProduct);
+  .get([auth.authenticate, auth.accessOnlyAdmin], orderProductController.getOrderProduct)
 
 module.exports = router;

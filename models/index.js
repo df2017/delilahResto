@@ -36,6 +36,8 @@ db.Sequelize = Sequelize;
 
 db.product = require('./product')(sequelize, Sequelize);
 db.user = require('./user')(sequelize, Sequelize);
+db.userRole = require('./user_role')(sequelize, Sequelize);
+db.payType = require('./pay_type')(sequelize, Sequelize);
 db.orderStatus = require('./order_status')(sequelize, Sequelize);
 db.order = require('./order')(sequelize, Sequelize);
 db.orderProduct = require('./order_product')(sequelize, Sequelize);

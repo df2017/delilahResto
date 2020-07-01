@@ -8,6 +8,7 @@ const middlewareError = require('./middlewares/catchError');
 
 //Modules Project
 const userRoutes = require('./routes/usersRoutes');
+const userRoleRoutes = require('./routes/userRoleRoutes');
 const productRoutes = require('./routes/productsRoutes');
 const orderRoutes = require('./routes/ordersRoutes');
 const orderProductRoutes = require('./routes/orderProductRoutes');
@@ -19,6 +20,7 @@ app.use(cors());
 
 app.use('/public', express.static(__dirname + '/public/images'));
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/user/roles', userRoleRoutes);
 app.use('/api/v1/products', productRoutes);
 app.use('/api/v1/orders', orderRoutes);
 app.use('/api/v1/order/products', orderProductRoutes);

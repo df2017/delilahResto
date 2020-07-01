@@ -11,15 +11,15 @@ Path: /config/config.json.
 Should enter the root password of the database
 ```
 ## Installing Project
-```cmd
-npm install --save
-npx sequelize-cli db:create
-npx sequelize-cli db:migrate
-npx sequelize-cli db:seed:all
+```
+1. npm install
+2. npx sequelize-cli db:create
+3. npx sequelize-cli db:migrate
+4. npx sequelize-cli db:seed:all
 ```
 ## Run Project
 
-```cmd
+```
 npm start
 ```
 ## Download Postman

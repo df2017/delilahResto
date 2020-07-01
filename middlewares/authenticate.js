@@ -12,7 +12,6 @@ exports.authenticate = (req, res, next) => {
   }
   // Validate token.
   jwt.verify(token, process.env.SECRETKEY, (err, decoded) => {
-    console.log(decoded)
     req.userInfo = decoded;
   });
 
@@ -20,7 +19,7 @@ exports.authenticate = (req, res, next) => {
 };
 
 exports.accessOnlyAdmin = (req, res, next) => {
-  if (!req.userInfo.role) {
+  if (req.userInfo.role !== 1) {
     res.status(401).json({ messageError: "Unauthorized. Only admin role" });
     return;
   }

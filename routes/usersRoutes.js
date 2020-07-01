@@ -6,13 +6,13 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(auth.authenticate, auth.accessOnlyAdmin, userController.getAllUsers)
+  .get([auth.authenticate, auth.accessOnlyAdmin], userController.getAllUsers)
 
 router
   .route("/:id")
-  .get(auth.authenticate, auth.onlyOwner, userController.getUser)
-  .patch(auth.authenticate, userController.updateUser)
-  .delete(auth.authenticate, auth.accessOnlyAdmin, userController.deleteUser);
+  .get([auth.authenticate, auth.onlyOwner], userController.getUser)
+  .patch([auth.authenticate, auth.onlyOwner], userController.updateUser)
+  .delete([auth.authenticate, auth.accessOnlyAdmin], userController.deleteUser);
 
 router
   .route("/register")

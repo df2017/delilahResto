@@ -1,11 +1,14 @@
+/************************ Import library ************************/
+
 const db = require("../models/index");
 const multer = require("multer");
-const sequelize  = require("../models/index");
+const uuid = require("uuid");
+
 /************************ Search all elements ************************/
+
 exports.getAll = (Model, include) => async (req, res) => {
   const queryFilter = req.query;
   const filter = ["exclude", "limit", "skip"];
-
   const getFilter = (param) => {
     let typeFilter;
     if (param in req.query) {
@@ -23,19 +26,11 @@ exports.getAll = (Model, include) => async (req, res) => {
     return typeFilter;
   };
 
-
   const limitElement = getFilter("limit");
   const sinceElement = getFilter("skip");
-  let formatDateHour = '';
-
-  // if(Model == 'Order'){
-  //   formatDateHour = Model.sequelize.fn('date_format', Model.sequelize.col('Order.createdAt'), '%H:%i:%s')
-  // }
-  
   const query = {
     attributes: {
       exclude: getFilter("exclude").split(","), 
-     // include: [[formatDateHour, 'Hour']],
     },
     where: {
       ...getFilter("filter"),
@@ -54,7 +49,6 @@ exports.getAll = (Model, include) => async (req, res) => {
         });
         return;
       }
-
       res.status(200).json({
         status: "success",
         results: data.length,
@@ -75,6 +69,7 @@ exports.getAll = (Model, include) => async (req, res) => {
 };
 
 /************************ Search one element ************************/
+
 exports.getOne = (Model) => async (req, res) => {
   Model.findByPk(req.params.id)
     .then((data) => {
@@ -103,6 +98,7 @@ exports.getOne = (Model) => async (req, res) => {
 };
 
 /************************ Create one element ************************/
+
 exports.createOne = (Model) => async (req, res) => {
   Model.create(req.body)
     .then((data) => {
@@ -125,15 +121,18 @@ exports.createOne = (Model) => async (req, res) => {
 };
 
 /************************ Upload Images ************************/
+
 const nameProductImage = [];
 const configuracionMulter = {
+  
   storage: (fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, __dirname + "/../public/images/");
     },
     filename: (req, file, cb) => {
-      let name = file.mimetype.split('/')[0];
-      let fullName = `${name}-${Math.random()}.jpg`;
+      let id = uuid.v4();
+      let nameExtension = file.mimetype.split('/');
+      let fullName = `${nameExtension[0]}-${id}.${nameExtension[1]}`;
       nameProductImage.pop()
       nameProductImage.push(fullName);
       cb(null, fullName);
@@ -143,7 +142,7 @@ const configuracionMulter = {
     if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
       cb(null, true);
     } else {
-      cb(new Error("Formato no Valido"));
+      cb(new Error("Format not Valid"));
     }
   },
 };
@@ -151,10 +150,11 @@ const configuracionMulter = {
 exports.upload = multer(configuracionMulter).single("image");
 
 /************************ Create  Product ************************/
+
 exports.createProduct = (Model) => async (req, res) => {
 
   if(nameProductImage.length != 0){
-    req.body.image = `/public/${nameProductImage}`;
+    req.body.image = nameProductImage[0];
   }
   Model.create(req.body)
     .then((data) => {
@@ -176,6 +176,7 @@ exports.createProduct = (Model) => async (req, res) => {
     });
 };
 /************************ Create  Order ************************/
+
 exports.createOrder = (Model) => async (req, res) => {
   const dataBody = req.body;
   let transaction = await db.sequelize.transaction();
@@ -219,6 +220,7 @@ exports.createOrder = (Model) => async (req, res) => {
 };
 
 /************************ Update one element ************************/
+
 exports.updateOne = (Model) => async (req, res) => {
 
   if(nameProductImage.length != 0){
@@ -270,6 +272,7 @@ exports.updateOne = (Model) => async (req, res) => {
 };
 
 /************************ Delete one element ************************/
+
 exports.deleteOne = (Model) => async (req, res) => {
   Model.findByPk(req.params.id)
     .then((data) => {

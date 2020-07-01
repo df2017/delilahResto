@@ -1,17 +1,17 @@
 const express = require('express');
 const orderController = require('../controllers/orderController');
+const auth = require('../middlewares/authenticate');
 
 const router = express.Router();
 
 router
   .route('/')
-  .get(orderController.getAllOrders)
-  .post(orderController.createOrder);
+  .get([auth.authenticate, auth.accessOnlyAdmin],orderController.getAllOrders)
 
 router
   .route('/:id')
-  .get(orderController.getOrder)
-  .patch(orderController.updateOrder)
-  .delete(orderController.deleteOrder);
+  .get([auth.authenticate, auth.onlyOwner],orderController.getOrder)
+  .patch([auth.authenticate, auth.accessOnlyAdmin],orderController.updateOrder)
+  .delete([auth.authenticate, auth.accessOnlyAdmin],orderController.deleteOrder);
 
 module.exports = router;

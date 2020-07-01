@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "003ac33a-418f-443d-87c9-192f57cd23e4",
+		"_postman_id": "6291890f-2737-4cdc-a33c-37e3d2119db9",
 		"name": "Delilah API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,26 +9,33 @@
 			"name": "product",
 			"item": [
 				{
-					"name": "{{URL}}/api/v1/products",
+					"name": "Listar todos los productos",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImFkbWluIiwicm9sZUFkbWluIjp0cnVlLCJpYXQiOjE1OTI3ODI0MjAsImV4cCI6MTU5Mjc4MjcyMH0.9tGj-OxAkD_7rG3bzW9HFDmwQ-V9qN9d0v0skUAXlZ0",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{URL}}/api/v1/products",
+							"raw": "{{URL}}/api/v1/products/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"v1",
-								"products"
+								"products",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "{{URL}}/api/v1/products/12",
+					"name": "Listar un producto por id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -48,13 +55,19 @@
 					"response": []
 				},
 				{
-					"name": "{{URL}}/api/v1/products",
+					"name": "Crear un producto",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlIjp0cnVlLCJpYXQiOjE1OTMzNTg5NTgsImV4cCI6MTU5MzM2MTM1OH0.jUJUB7f1vzj3oPxCw5_8-DURJIxowlLHXNdGbnlm5K0",
+								"type": "text"
+							}
+						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n        \"name\": \"Hamburguer\",\r\n        \"description\": \"beef, tomato, cheese\",\r\n        \"price\": 169.90,\r\n        \"image\":\"@/Users/DL/Desktop/Acamica/Actividades/Projects/images/american-hamburger.jpg\"\r\n      }",
+							"mode": "formdata",
+							"formdata": [],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -76,13 +89,25 @@
 					"response": []
 				},
 				{
-					"name": "{{URL}}/api/v1/products/1",
+					"name": "Actualizar un producto",
 					"request": {
 						"method": "PATCH",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlIjp0cnVlLCJpYXQiOjE1OTMzODE3MzksImV4cCI6MTU5MzM4NDEzOX0.60jkMYu-eMdbUU93KW1ZTU8W5d4Gtxj1mIsEcUFO_wQ",
+								"type": "text"
+							}
+						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n        \"name\": \"Hamburguer American\"\r\n        \r\n      }",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Admin/Pictures/hamburgers1.jpg"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -90,22 +115,22 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/products/1",
+							"raw": "{{URL}}/api/v1/orders/17",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"v1",
-								"products",
-								"1"
+								"orders",
+								"17"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "{{URL}}/api/v1/products/11",
+					"name": "Borrar un producto",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -123,18 +148,415 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Crear un Producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlIjp0cnVlLCJpYXQiOjE1OTMzODE3MzksImV4cCI6MTU5MzM4NDEzOX0.60jkMYu-eMdbUU93KW1ZTU8W5d4Gtxj1mIsEcUFO_wQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Hamburguer cheese",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "beef, tomato, doble cheese",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "370",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Admin/Pictures/hamburgers1.jpg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "user",
-			"item": [],
+			"item": [
+				{
+					"name": "Listar todos los usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlIjp0cnVlLCJpYXQiOjE1OTMyODkzNzksImV4cCI6MTU5MzI5MTc3OX0.ZVIHwT6pXGpWftApDv6L1eaWJy9kDDPmrfwqjgXmk14",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar un usuario por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlQWRtaW4iOnRydWUsImlhdCI6MTU5Mjc5MTE4OSwiZXhwIjoxNTkyNzkxNzg5fQ.HyXPJXP0ultq7uL3EFOTorqzy12K0ZSh0IPX8rQJVeg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/users/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"userName\": \"admin\",\r\n        \"name\": \"Diego\",\r\n        \"surname\": \"Ferreyra\",\r\n        \"email\": \"dferrey22783@gmail.com\",\r\n        \"password\": \"123456\",\r\n        \"roleAdmin\": true\r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un usuario",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Hamburguer American\"\r\n        \r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/users/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar un usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/users/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar usuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"userName\": \"fprandi\",\r\n        \"name\": \"Fede\",\r\n        \"surname\": \"Prandi\",\r\n        \"email\": \"fprandi@mail.com\",\r\n        \"password\": \"123456\",\r\n        \"role\": 2\r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/users/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login usuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"admin\",\r\n  \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/users/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "order",
-			"item": [],
+			"item": [
+				{
+					"name": "Listar pedidos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlQWRtaW4iOnRydWUsImlhdCI6MTU5Mjc5MTE4OSwiZXhwIjoxNTkyNzkxNzg5fQ.HyXPJXP0ultq7uL3EFOTorqzy12K0ZSh0IPX8rQJVeg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/orders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar un pedido por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlQWRtaW4iOnRydWUsImlhdCI6MTU5Mjc5MTE4OSwiZXhwIjoxNTkyNzkxNzg5fQ.HyXPJXP0ultq7uL3EFOTorqzy12K0ZSh0IPX8rQJVeg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/orders/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_user\": 2,\r\n  \"id_status\": 1,\r\n  \"pay\": \"cash\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/orders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "order_product",
+			"item": [
+				{
+					"name": "Listar productos asociados al pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/order/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Guardar Pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"order\": {\r\n    \"id_user\": 2,\r\n    \"id_status\": 1,\r\n    \"pay\": 2\r\n  },\r\n  \"detail\": [\r\n    {\r\n      \"id_product\": 2,\r\n      \"nameProduct\": \"Hamburger Mexican\",\r\n      \"amountProduct\": 4,\r\n      \"priceProduct\": 350\r\n    },\r\n    {\r\n      \"id_product\": 3,\r\n      \"nameProduct\": \"Hamburger Cheese\",\r\n      \"amountProduct\": 3,\r\n      \"priceProduct\": 320\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/order/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar pedidos-producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/orders/22",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"22"
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"protocolProfileBehavior": {}
 		}
 	],

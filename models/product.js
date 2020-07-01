@@ -1,6 +1,10 @@
 "use strict";
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 module.exports = (sequelize, DataTypes) => {
+  
   const Product = sequelize.define(
     "Product",
     {
@@ -39,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultScope: {
         attributes: {
           exclude: ["createdAt", "updatedAt"],
+          include: [[sequelize.fn("concat", `http://${process.env.HOST}:${process.env.PORT}/public/`,sequelize.col("Product.image")), "urlImage"]],
         },
       },
     }

@@ -44,7 +44,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       defaultScope: {
         attributes: {
-          exclude: ["createdAt","updatedAt","id_user","id_status"],
+          exclude: ["updatedAt"],
+          include: [[sequelize.fn('date_format', sequelize.col('Order.createdAt'), '%H:%i:%s'), 'Hour']],
         },
       },
     }

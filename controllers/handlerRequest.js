@@ -97,29 +97,6 @@ exports.getOne = (Model) => async (req, res) => {
     });
 };
 
-/************************ Create one element ************************/
-
-exports.createOne = (Model) => async (req, res) => {
-  Model.create(req.body)
-    .then((data) => {
-      res.status(200).json({
-        status: "success",
-        data: data,
-      });
-    })
-    .catch((error) => {
-      if (process.env.NODE_ENV === "dev") {
-        res.status(400).json({
-          message: error,
-        });
-        return;
-      }
-      res.status(400).json({
-        message: error.errors[0].message,
-      });
-    });
-};
-
 /************************ Upload Images ************************/
 
 const nameProductImage = [];
@@ -148,12 +125,14 @@ const configuracionMulter = {
 
 exports.upload = multer(configuracionMulter).single("image");
 
-/************************ Create  Product ************************/
+/************************ Create one element ************************/
 
-exports.createProduct = (Model) => async (req, res) => {
+exports.createOne = (Model) => async (req, res) => {
+
   if (nameProductImage.length != 0) {
     req.body.image = nameProductImage[0];
   }
+
   Model.create(req.body)
     .then((data) => {
       res.status(200).json({
@@ -173,6 +152,7 @@ exports.createProduct = (Model) => async (req, res) => {
       });
     });
 };
+
 /************************ Create  Order ************************/
 
 exports.createOrder = (Model) => async (req, res) => {
@@ -246,8 +226,9 @@ result
 /************************ Update one element ************************/
 
 exports.updateOne = (Model) => async (req, res) => {
+
   if (nameProductImage.length != 0) {
-    req.body.image = `/public/${nameProductImage}`;
+    req.body.image = `${nameProductImage}`;
   }
 
   Model.findByPk(req.params.id)
@@ -274,10 +255,23 @@ exports.updateOne = (Model) => async (req, res) => {
           where: {
             id: req.params.id,
           },
-        });
-        res.status(200).json({
-          status: "success",
-          data: req.body,
+        })
+        .then((data) => {
+          res.status(200).json({
+            status: "success",
+            data: data,
+          });
+        })
+        .catch((error) => {
+          if (process.env.NODE_ENV === "dev") {
+            res.status(400).json({
+              message: error.name,
+            });
+            return;
+          }
+          res.status(400).json({
+            message: error.original.code,
+          });
         });
       }
     })

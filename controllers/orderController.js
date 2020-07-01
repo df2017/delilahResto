@@ -26,4 +26,3 @@ exports.getAllOrders = handler.getAll(Order, [orderStatusFilter, userFilter]);
 exports.getOrder = handler.getOne(Order);
 exports.createOrder = handler.createOne(Order);
 exports.updateOrder = handler.updateOne(Order);
-exports.deleteOrder = handler.deleteOne(Order);

@@ -10,9 +10,9 @@ Node v12.18.0
 MariaDB (Based in MySQL) v10.3
 ```
 ## Download MariaDB
-```
+
 To click [MariaDB](https://downloads.mariadb.org/mariadb/)
-```
+
 ## Pre-Installing Project
 ```
 Modify password key in file config.json. 
@@ -32,9 +32,9 @@ Should enter the root password of the database
 npm start
 ```
 ## Download Postman
-```
+
 To click [Postman](https://www.postman.com/downloads/)
-```
+
 #### Import file in postman - Path: 
 
 * /tools/Delilah API.postman_collection.json

@@ -6,210 +6,37 @@
 	},
 	"item": [
 		{
-			"name": "product",
-			"item": [
-				{
-					"name": "Listar todos los productos",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImFkbWluIiwicm9sZUFkbWluIjp0cnVlLCJpYXQiOjE1OTI3ODI0MjAsImV4cCI6MTU5Mjc4MjcyMH0.9tGj-OxAkD_7rG3bzW9HFDmwQ-V9qN9d0v0skUAXlZ0",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{URL}}/api/v1/products/",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"products",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Listar un producto por id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/api/v1/products/1",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"products",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Crear un producto",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlIjp0cnVlLCJpYXQiOjE1OTMzNTg5NTgsImV4cCI6MTU5MzM2MTM1OH0.jUJUB7f1vzj3oPxCw5_8-DURJIxowlLHXNdGbnlm5K0",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/v1/products",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Actualizar un producto",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlIjp0cnVlLCJpYXQiOjE1OTMzODE3MzksImV4cCI6MTU5MzM4NDEzOX0.60jkMYu-eMdbUU93KW1ZTU8W5d4Gtxj1mIsEcUFO_wQ",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/C:/Users/Admin/Pictures/hamburgers1.jpg"
-								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/v1/orders/17",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"orders",
-								"17"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Borrar un producto",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/api/v1/products/11",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"products",
-								"11"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Crear un Producto",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlIjp0cnVlLCJpYXQiOjE1OTMzODE3MzksImV4cCI6MTU5MzM4NDEzOX0.60jkMYu-eMdbUU93KW1ZTU8W5d4Gtxj1mIsEcUFO_wQ",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "Hamburguer cheese",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "beef, tomato, doble cheese",
-									"type": "text"
-								},
-								{
-									"key": "price",
-									"value": "370",
-									"type": "text"
-								},
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/C:/Users/Admin/Pictures/hamburgers1.jpg"
-								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/v1/products",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"products"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
 			"name": "user",
 			"item": [
+				{
+					"name": "Login usuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"admin\",\r\n  \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/users/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Listar todos los usuarios",
 					"request": {
@@ -217,8 +44,9 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlIjp0cnVlLCJpYXQiOjE1OTMyODkzNzksImV4cCI6MTU5MzI5MTc3OX0.ZVIHwT6pXGpWftApDv6L1eaWJy9kDDPmrfwqjgXmk14",
-								"type": "text"
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -242,12 +70,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlQWRtaW4iOnRydWUsImlhdCI6MTU5Mjc5MTE4OSwiZXhwIjoxNTkyNzkxNzg5fQ.HyXPJXP0ultq7uL3EFOTorqzy12K0ZSh0IPX8rQJVeg",
-								"type": "text"
+								"value": "Bearer key",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "{{URL}}/api/v1/users/3",
+							"raw": "{{URL}}/api/v1/users/2",
 							"host": [
 								"{{URL}}"
 							],
@@ -255,35 +84,7 @@
 								"api",
 								"v1",
 								"users",
-								"3"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Crear un usuario",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n        \"userName\": \"admin\",\r\n        \"name\": \"Diego\",\r\n        \"surname\": \"Ferreyra\",\r\n        \"email\": \"dferrey22783@gmail.com\",\r\n        \"password\": \"123456\",\r\n        \"roleAdmin\": true\r\n      }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/v1/users",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users"
+								"2"
 							]
 						}
 					},
@@ -296,7 +97,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"name\": \"Hamburguer American\"\r\n        \r\n      }",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -342,10 +143,17 @@
 					"name": "Registrar usuarios",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"userName\": \"fprandi\",\r\n        \"name\": \"Fede\",\r\n        \"surname\": \"Prandi\",\r\n        \"email\": \"fprandi@mail.com\",\r\n        \"password\": \"123456\",\r\n        \"role\": 2\r\n      }",
+							"raw": "{\r\n  \"userName\": \"pargento\",\r\n  \"name\": \"Pepe\",\r\n  \"surname\": \"Argento\",\r\n  \"email\": \"pargento@mail.com\",\r\n  \"phoneNumber\": \"3512555555\",\r\n  \"address\": \"Caseros 258\",\r\n  \"password\": \"123456\",\r\n  \"role\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -366,15 +174,83 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "user_role",
+			"item": [
+				{
+					"name": "Listar todos los roles de usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/user/roles",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"roles"
+							]
+						}
+					},
+					"response": []
 				},
 				{
-					"name": "Login usuarios",
+					"name": "Listar un rol de usuario por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/user/roles/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"roles",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un rol de usuario",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"userName\": \"admin\",\r\n  \"password\": \"admin123\"\r\n}",
+							"raw": "{\r\n    \"role\":\"gerente\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -382,15 +258,340 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/users/login",
+							"raw": "{{URL}}/api/v1/user/roles",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"v1",
-								"users",
-								"login"
+								"user",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un rol de usuario",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"client\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/user/roles/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"roles",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar un rol de usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/user/roles/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"roles",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "Listar todos los productos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar un producto por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/user/roles/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un producto",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/products/4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar un producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/products/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "order_product",
+			"item": [
+				{
+					"name": "Listar productos asociados al pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/order/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear y guardar Pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"order\": {\r\n    \"id_user\": 2,\r\n    \"id_status\": 1,\r\n    \"pay\": 2\r\n  },\r\n  \"detail\": [\r\n    {\r\n      \"id_product\": 3,\r\n      \"amountProduct\": 3\r\n    },\r\n    {\r\n      \"id_product\": 1,\r\n      \"amountProduct\": 5\r\n    },\r\n    {\r\n      \"id_product\": 2,\r\n      \"amountProduct\": 2\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/order/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar pedidos-producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/orders/22",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"22"
 							]
 						}
 					},
@@ -409,8 +610,9 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJyb2xlQWRtaW4iOnRydWUsImlhdCI6MTU5Mjc5MTE4OSwiZXhwIjoxNTkyNzkxNzg5fQ.HyXPJXP0ultq7uL3EFOTorqzy12K0ZSh0IPX8rQJVeg",
-								"type": "text"
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -454,13 +656,20 @@
 					"response": []
 				},
 				{
-					"name": "Crear un pedido",
+					"name": "Actualizar un pedido",
 					"request": {
-						"method": "POST",
-						"header": [],
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id_user\": 2,\r\n  \"id_status\": 1,\r\n  \"pay\": \"cash\"\r\n}",
+							"raw": "{\r\n    \"id_status\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -468,14 +677,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/orders",
+							"raw": "{{URL}}/api/v1/orders/8",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"v1",
-								"orders"
+								"orders",
+								"8"
 							]
 						}
 					},
@@ -485,15 +695,22 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "order_product",
+			"name": "order_status",
 			"item": [
 				{
-					"name": "Listar productos asociados al pedido",
+					"name": "Listar todos los estados de pedidos",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
-							"raw": "{{URL}}/api/v1/order/products",
+							"raw": "{{URL}}/api/v1/order/statuses",
 							"host": [
 								"{{URL}}"
 							],
@@ -501,20 +718,55 @@
 								"api",
 								"v1",
 								"order",
-								"products"
+								"statuses"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Guardar Pedido",
+					"name": "Listar un estado de pedido por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/order/statuses/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"statuses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un estado de pedido",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"order\": {\r\n    \"id_user\": 2,\r\n    \"id_status\": 1,\r\n    \"pay\": 2\r\n  },\r\n  \"detail\": [\r\n    {\r\n      \"id_product\": 2,\r\n      \"nameProduct\": \"Hamburger Mexican\",\r\n      \"amountProduct\": 4,\r\n      \"priceProduct\": 350\r\n    },\r\n    {\r\n      \"id_product\": 3,\r\n      \"nameProduct\": \"Hamburger Cheese\",\r\n      \"amountProduct\": 3,\r\n      \"priceProduct\": 320\r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n    \"status\":\"pending\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -522,7 +774,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/order/products",
+							"raw": "{{URL}}/api/v1/order/statuses",
 							"host": [
 								"{{URL}}"
 							],
@@ -530,27 +782,234 @@
 								"api",
 								"v1",
 								"order",
-								"products"
+								"statuses"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Borrar pedidos-producto",
+					"name": "Actualizar un estado de pedido",
 					"request": {
-						"method": "DELETE",
-						"header": [],
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"canceled\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{URL}}/api/v1/orders/22",
+							"raw": "{{URL}}/api/v1/order/statuses/7",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"v1",
-								"orders",
-								"22"
+								"order",
+								"statuses",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar un estado de pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/order/statuses/7",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"statuses",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "pay_type",
+			"item": [
+				{
+					"name": "Listar todos los tipos de pagos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/pay/types",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pay",
+								"types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar un tipo de pago por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/pay/types/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pay",
+								"types",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un tipo de pago",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\":\"credit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/pay/types",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pay",
+								"types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un tipo de pago",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"debit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/pay/types/4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pay",
+								"types",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar un tipo de pago",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/v1/pay/types/4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pay",
+								"types",
+								"4"
 							]
 						}
 					},

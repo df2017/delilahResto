@@ -304,7 +304,7 @@ exports.deleteOne = (Model) => async (req, res) => {
           id: req.params.id,
         },
       });
-      res.status(200).json();
+      res.status(204).json();
     })
     .catch((error) => {
       if (process.env.NODE_ENV === "dev") {

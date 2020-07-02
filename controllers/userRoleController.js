@@ -1,6 +1,5 @@
 const db = require('../models/index');
 const handler = require('./handlerRequest');
-const auth = require('./authenticateController')
 
 const User_Role = db.userRole;
 
